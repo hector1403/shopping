@@ -2,7 +2,8 @@
 
 angular.module('shoppingApp', [
   'ngCookies',
-  'ngRoute'
+  'ngRoute',
+  'ui.bootstrap'
 ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -13,4 +14,12 @@ angular.module('shoppingApp', [
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+    .controller('MainCtrl', function ($scope) {
+        $scope.awesomeThings = [
+            'HTML5 Boilerplate',
+            'AngularJS',
+            'Karma'
+        ];
+    });
+;
