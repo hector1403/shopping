@@ -3,7 +3,8 @@
 angular.module('shoppingApp', [
   'ngCookies',
   'ngRoute',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'cameras'
 ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -15,7 +16,10 @@ angular.module('shoppingApp', [
         redirectTo: '/'
       });
   })
-    .controller('MainCtrl', function ($scope) {
+    .controller('MainCtrl', function ($scope, camerasService) {
+
+        $scope.cameras = camerasService.cameras;
+
         $scope.awesomeThings = [
             'HTML5 Boilerplate',
             'AngularJS',
