@@ -14,11 +14,14 @@
 </div>
 
 <div ng-controller="MainCtrl">
-    <table ng-repeat="camera in cameras.cameras" class="table-bordered">
-        <tr class="row">
-            <th class="col-md-9">{{ camera.name}}</th><th class="col-md-9">{{camera.description}}</th>
-        </tr>
-    </table>
+    <div ng-repeat="camera in cameras.cameras" class="nav-divider">
+        <div class="table-bordered">
+            <div class="table-bordered">{{ camera.name}}</div>
+            <div >{{camera.description}}</div>
+            <br/>
+        </div>
+        <br/><br/>
+    </div>
 
 </div>
 

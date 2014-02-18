@@ -1,6 +1,8 @@
 // Generated on 2014-02-11 using generator-angular 0.7.1
 'use strict';
 
+var path = require('path');
+
 // # Globbing
 // for performance reasons we're only matching one level down:
 // 'test/spec/{,*/}*.js'
@@ -23,6 +25,18 @@ module.exports = function (grunt) {
       // configurable paths
       app: require('./bower.json').appPath || 'app',
       dist: 'dist'
+    },
+
+    express: {
+      server: {
+          options: {
+              port: '9000',
+              hostname: 'localhost',
+              server: path.resolve('./server/app.js'),
+              livereload: false,
+              serverreload: false
+          }
+      }
     },
 
     // Watches files for changes and runs tasks based on the changed files
@@ -56,7 +70,7 @@ module.exports = function (grunt) {
     // The actual grunt server settings
     connect: {
       options: {
-        port: 9000,
+        port: 9090,
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: 'localhost',
         livereload: 35729
@@ -304,7 +318,11 @@ module.exports = function (grunt) {
 
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
-      return grunt.task.run(['build', 'connect:dist:keepalive']);
+      return grunt.task.run([
+          'build',
+          'express',
+          'connect:dist:keepalive'
+      ]);
     }
 
     grunt.task.run([
@@ -312,6 +330,7 @@ module.exports = function (grunt) {
       'bower-install',
       'autoprefixer',
       'connect:livereload',
+      'express',
       'watch'
     ]);
   });
@@ -351,4 +370,7 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.loadNpmTasks('grunt-express');
+
 };
