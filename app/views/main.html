@@ -8,18 +8,16 @@
 </div>
 
 <div class="jumbotron">
-  <h1>Camera Shopping !</h1>
-
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
+  <h2><span class="glyphicon glyphicon-camera"></span>Camera Shopping !</h2>
 </div>
 
 <div ng-controller="MainCtrl">
-    <div ng-repeat="camera in cameras.cameras" class="nav-divider">
+    Comparing: <span class="btn btn-default" ng-repeat="item in selected">{{ item }}</span>
 
-        <input type="checkbox" ng-model="camera.id" name="{{camera.id}}" value="{{camera.id}}">
-        <div class="table-bordered">
-            <div class="table-bordered">{{ camera.name}}</div>
-            <div >{{camera.description}}</div>
+    <div ng-repeat="camera in cameras.cameras" class="nav-divider">
+    <div>
+        <input type="checkbox" ng-model="camera.id" name="{{camera.id}}" value="{{camera.id}}" ng-click="addForComparison(camera.id)" ng-ch="changed()">
+            <span class="table-hover">{{ camera.name}}</span>
             <br/>
         </div>
         <br/><br/>

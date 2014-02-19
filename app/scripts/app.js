@@ -16,7 +16,22 @@ angular.module('shoppingApp', [
         redirectTo: '/'
       });
   })
-    .controller('MainCtrl', function ($scope, camerasService) {
+    .controller('MainCtrl', function ($scope, camerasService, $log) {
+        var selectedProducts = [];
+
+        $scope.addForComparison = function(productId) {
+            if(selectedProducts != null && selectedProducts.length > 2) {
+                $log.error("Total limit of comparison reached !!");
+                return;
+            }
+
+            selectedProducts.push(productId);
+        }
+
+        $scope.changed = function() {
+            $log.debug("I have changed !");
+        }
+        $scope.selected = selectedProducts;
 
         $scope.cameras = camerasService.cameras;
 
