@@ -15,6 +15,8 @@
 
 <div ng-controller="MainCtrl">
     <div ng-repeat="camera in cameras.cameras" class="nav-divider">
+
+        <input type="checkbox" ng-model="camera.id" name="{{camera.id}}" value="{{camera.id}}">
         <div class="table-bordered">
             <div class="table-bordered">{{ camera.name}}</div>
             <div >{{camera.description}}</div>
