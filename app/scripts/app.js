@@ -18,15 +18,27 @@ angular.module('shoppingApp', [
       });
   })
     .controller('MainCtrl', function ($scope, camerasService, $log) {
-        $scope.isLimitReached = function () {
-            if($scope.selectedProducts && $scope.selectedProducts.products)
-                return $scope.selectedProducts.products.length > 3;
-            return false;
-        };
+        $scope.isLimitReached = false;
 
         $scope.selectedProducts = {
             products: []
         };
+
+        $scope.$watch('selectedProducts.products', function(newVal, oldVal){
+
+            if(newVal == oldVal) return;
+
+            if($scope.selectedProducts.products.length < 3) {
+                $scope.isLimitReached = false;
+            }
+
+            if(newVal.length > 3) {
+                $scope.isLimitReached = true;
+                var popped = $scope.selectedProducts.products.pop();
+                $log.debug("Popped: "+ popped);
+            }
+
+        }, true);
 
         $scope.cameras = camerasService.cameras;
     });

@@ -13,8 +13,8 @@
 
 <div ng-controller="MainCtrl">
     <div style="height: 40px; padding-bottom: 80px">
-        <span class="btn btn-default" ng-repeat="item in selectedProducts.products">{{ item.name }}</span>
-        <div ng-show="isLimitReached()" class="alert-danger">You can only compare {{selectedProducts.products.length}} items at one time !!</div>
+        <span class="btn btn-default" ng-repeat="product in selectedProducts.products">{{ product.name }}</span>
+        <div ng-show="isLimitReached" class="alert-danger">You can only compare three items at one time !!</div>
     </div>
     <div ng-repeat="camera in cameras.cameras" class="nav-divider">
     <div>
