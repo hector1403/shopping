@@ -4,7 +4,8 @@ angular.module('shoppingApp', [
   'ngCookies',
   'ngRoute',
   'ui.bootstrap',
-  'cameras'
+  'cameras',
+   'checklist-model'
 ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -17,20 +18,14 @@ angular.module('shoppingApp', [
       });
   })
     .controller('MainCtrl', function ($scope, camerasService, $log) {
-        var selectedProducts = [];
 
-        $scope.addForComparison = function(productId) {
-            if(selectedProducts != null && selectedProducts.length > 2) {
-                $scope.compareLimitReached = true;
-                return;
-            }
-            selectedProducts.push(productId);
-        }
+        $scope.selectedProducts = {
+            products: []
+        };
 
-        $scope.changed = function() {
-            $log.debug("I have changed !");
-        }
-        $scope.selected = selectedProducts;
+        $scope.$watch('selectedProducts.products', function(newValue, oldValue) {
+           $log.debug("newValue:" + newValue);
+        });
         $scope.cameras = camerasService.cameras;
     });
 ;
