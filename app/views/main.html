@@ -13,10 +13,11 @@
 
 <div ng-controller="MainCtrl">
     Comparing: <span class="btn btn-default" ng-repeat="item in selected">{{ item }}</span>
+    <h4 ng-show="compareLimitReached" class="alert-danger">You can only compare {{selected.length}} items at one time !!</h4>
 
     <div ng-repeat="camera in cameras.cameras" class="nav-divider">
     <div>
-        <input type="checkbox" ng-model="camera.id" name="{{camera.id}}" value="{{camera.id}}" ng-click="addForComparison(camera.id)" ng-ch="changed()">
+        <input type="checkbox" ng-model="camera.id" name="{{camera.id}}" value="{{camera.id}}" ng-click="addForComparison(camera.id)" ng-changed="changed()">
             <span class="table-hover">{{ camera.name}}</span>
             <br/>
         </div>

@@ -21,10 +21,9 @@ angular.module('shoppingApp', [
 
         $scope.addForComparison = function(productId) {
             if(selectedProducts != null && selectedProducts.length > 2) {
-                $log.error("Total limit of comparison reached !!");
+                $scope.compareLimitReached = true;
                 return;
             }
-
             selectedProducts.push(productId);
         }
 
@@ -32,13 +31,6 @@ angular.module('shoppingApp', [
             $log.debug("I have changed !");
         }
         $scope.selected = selectedProducts;
-
         $scope.cameras = camerasService.cameras;
-
-        $scope.awesomeThings = [
-            'HTML5 Boilerplate',
-            'AngularJS',
-            'Karma'
-        ];
     });
 ;
