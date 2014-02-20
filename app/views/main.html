@@ -12,14 +12,15 @@
 </div>
 
 <div ng-controller="MainCtrl">
-    Comparing: <span class="btn btn-default" ng-repeat="item in selectedProducts.products">{{ item }}</span>
-    <!--<h4 ng-show="compareLimitReached" class="alert-danger">You can only compare {{selected.length}} items at one time !!</h4>-->
-
+    <div style="height: 40px; padding-bottom: 80px">
+        <span class="btn btn-default" ng-repeat="item in selectedProducts.products">{{ item.name }}</span>
+        <div ng-show="isLimitReached()" class="alert-danger">You can only compare {{selectedProducts.products.length}} items at one time !!</div>
+    </div>
     <div ng-repeat="camera in cameras.cameras" class="nav-divider">
     <div>
         <input type="checkbox"
                checklist-model="selectedProducts.products"
-               checklist-value="camera.id">
+                   checklist-value="camera" checklist-max-selected="5">
 
             <span class="table-hover">{{ camera.name}}</span>
             <br/>

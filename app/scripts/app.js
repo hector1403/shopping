@@ -5,7 +5,7 @@ angular.module('shoppingApp', [
   'ngRoute',
   'ui.bootstrap',
   'cameras',
-   'checklist-model'
+  'checklist-model'
 ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -18,14 +18,16 @@ angular.module('shoppingApp', [
       });
   })
     .controller('MainCtrl', function ($scope, camerasService, $log) {
+        $scope.isLimitReached = function () {
+            if($scope.selectedProducts && $scope.selectedProducts.products)
+                return $scope.selectedProducts.products.length > 3;
+            return false;
+        };
 
         $scope.selectedProducts = {
             products: []
         };
 
-        $scope.$watch('selectedProducts.products', function(newValue, oldValue) {
-           $log.debug("newValue:" + newValue);
-        });
         $scope.cameras = camerasService.cameras;
     });
 ;
