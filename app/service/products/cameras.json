@@ -47,5 +47,54 @@
             "description": "This is description of Nikon D600",
             "specs": "This is specification of Nikon D600",
             "price_usd":  "2000"
-        }]
+        },
+        {
+            "id": "canon-1",
+            "name": "canon D800",
+            "search_name": ["canon D800", "D800", "D 800", "D800"],
+            "description": "This is description of canon D800",
+            "specs": "This is specification of canon D800",
+            "price_usd": "3000"
+        },
+        {
+            "id": "canon-2",
+            "name": "canon D800E",
+            "search_name": ["canon D800E", "D800E", "D 800E", "D800E"],
+            "description": "This is description of canon D800E",
+            "specs": "This is specification of canon D800E",
+            "price_usd":  "3300"
+        },
+        {
+            "id": "canon-3",
+            "name": "canon D4",
+            "search_name": ["canon D4", "D4", "D4", "D4"],
+            "description": "This is description of canon D4",
+            "specs": "This is specification of canon D4",
+            "price_usd":  "3300"
+        },
+        {
+            "id": "canon-4",
+            "name": "canon D7000",
+            "search_name": ["canon D7000", "D7000", "D 7000", "D7000"],
+            "description": "This is description of canon D7000",
+            "specs": "This is specification of canon D7000",
+            "price_usd": "1000"
+        },
+        {
+            "id": "canon-5",
+            "name": "canon D7100",
+            "search_name": ["canon D7100", "D7100", "D 7100", "D7100"],
+            "description": "This is description of canon D7100",
+            "specs": "This is specification of canon D7100",
+            "price_usd":  "1300"
+        },
+        {
+            "id": "canon-6",
+            "name": "canon D600",
+            "search_name": ["canon D600", "D600", "D600", "D600"],
+            "description": "This is description of canon D600",
+            "specs": "This is specification of canon D600",
+            "price_usd":  "2000"
+        }
+    ]
 }

@@ -17,7 +17,20 @@ angular.module('shoppingApp', [
         redirectTo: '/'
       });
   })
+  .filter('startFrom', function() {
+    return function(input, start) {
+        if(input) {
+            start = +start; //parse to int
+            return input.slice(start);
+        }
+        return [];
+     }
+    })
     .controller('MainCtrl', function ($scope, camerasService, $log) {
+        $scope.currentPage = 1; //current page
+        $scope.maxSize = 5; //pagination max size
+        $scope.entryLimit = 5; //max rows for data table
+
         $scope.isLimitReached = false;
 
         $scope.selectedProducts = {
