@@ -1,7 +1,9 @@
 {
   "name": "shopping",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "mongolian": "~0.1.18"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "express": "~3.4.8",
