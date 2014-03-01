@@ -1,32 +1,32 @@
+
 var express = require('express');
-var mongolian = require('mongolian');
-
 var app = express();
-app.use(express.bodyParser());
-var db = new mongolian('mongodb://taruntyagi14:marc1982@ds033629.mongolab.com:33629/meandb');
+var port = process.env.PORT || 8080;
+var mongoose = require('mongoose');
+var passport = require('passport');
+var flash = require('connect-flash');
 
-app.put('/', function(req, res) {
-    var deal = req.body.deal_description;
-    var tags = req.body.all_tags;
+var configDB =  require('./config/database.js');
 
-    console.log('Received deal: '+ deal);
-    console.log('Received all_tags: '+ tags);
+mongoose.connect(configDB.url);
 
-    db.collection("deals").insert({
-        deal: deal,
-        deal_tags: tags.split(",")
-    })
+// require('./config/passport')(passport);
 
-    res.contentType('json');
-    res.send(JSON.stringify({ status: "success" }));
+app.configure(function(){
+    app.use(express.logger('dev'));
+    app.use(express.cookieParser());
+    app.use(express.bodyParser());
+
+    app.set('view engine', 'ejs');
+
+    app.use(express.session({ secret: 'ilovemauryaladdunidhipapamummy'}));
+    app.use(passport.initialize());
+    app.use(passport.session());
+    app.use(flash());
 });
 
 
-var port = process.env.PORT || 3001;
+require('./app/routes.js')(app, passport);
 
-app.listen(port, function() {
-   console.log('Listening on port:' + port);
-});
-
-module.exports = app;
-
+app.listen(port);
+console.log('The magic happens on port ' + port);
